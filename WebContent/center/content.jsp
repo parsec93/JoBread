@@ -95,6 +95,8 @@ List<BoardCommentBean> bcbList = bcdao.getBoardComment(num);
  onclick="location.href='deleteForm.jsp?num=<%=num%>&pageNum=<%=pageNum%>'">
 <input type="button" value="글목록" class="btn" 
  onclick="location.href='notice.jsp?pageNum=<%=pageNum%>'">
+ <input type = "button" value="답글쓰기" class="btn"
+ onclick ="cloation.href='rewrite.jsp?num=<%=num %>&pageNum=<%=pageNum %>'">
 </div>
 <div class="clear"></div>
 <div id="page_control"></div>
