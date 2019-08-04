@@ -31,6 +31,8 @@ if(check == 1){
 	%>
 	<script type="text/javascript">
 		alert("id 사용가능");
+		opener.document.fr.idboolean.value = true;
+		window.close();
 	</script>
 	<%
 }

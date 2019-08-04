@@ -37,10 +37,11 @@ public class MemberDAO {
 			PreparedStatement pstmt = null;
 			
 		try {
+			
 			con = getConnection();
 
 
-			 String sql = "insert into member(id, pass, name, reg_date, email, address, mobile, postcode, add1, add2, add3) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			 String sql = "insert into member(id, password, name, reg_date, email, address, mobile, postcode, add1, add2, add3) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			 pstmt = con.prepareStatement(sql);
 			 pstmt.setString(1, mb.getId()); //첫번째 물음표, 값 
 			 pstmt.setString(2, mb.getPass()); //두번째 물음표, 값
@@ -147,7 +148,7 @@ public class MemberDAO {
 			
 			if(rs.next()) {
 				if(id.equals(rs.getString("id"))) {
-					if(pass.equals(rs.getString("pass"))) {
+					if(pass.equals(rs.getString("password"))) {
 						check=1;
 					}else {
 						check=0;
@@ -168,32 +169,37 @@ public class MemberDAO {
 		return check;
 	}
 	
-	public void updateMember(MemberBean mb) {
+	public int updateMember(MemberBean mb) {
 		
 		Connection con = null;
 		PreparedStatement pstmt = null;
-		
+		int isUpdate = -1;
 	try {
 		con = getConnection();
 
-
-		 String sql = "update member set pass=?, name=?, email=?, address=?, mobile=? where id=?";
+		 String sql = "update member set password=?, name=?, email=?, address=?, mobile=?, postcode=?, add1=?, add2=?, add3=? where id=?";
 		 pstmt = con.prepareStatement(sql);
-		 pstmt.setString(1, mb.getPass()); //첫번째 물음표, 값 
-		 pstmt.setString(2, mb.getName()); //두번째 물음표, 값
-		 pstmt.setString(3, mb.getEmail());
-		 pstmt.setString(4, mb.getAddress());
-		 pstmt.setString(5, mb.getMobile());
-		 pstmt.setString(6,mb.getId());
+		 pstmt.setString(1, mb.getPass()); // password
+		 pstmt.setString(2, mb.getName()); // name 
+		 pstmt.setString(3, mb.getEmail()); // email
+		 pstmt.setString(4, mb.getAddress()); // address 
+		 pstmt.setString(5, mb.getMobile()); // mobile
+		 pstmt.setInt(6, mb.getPostcode()); // postcode 
+		 pstmt.setString(7,  mb.getAdd1()); // add1
+		 pstmt.setString(8,  mb.getAdd2()); // add2 
+		 pstmt.setString(9,  mb.getAdd3()); // add3
+		 pstmt.setString(10,mb.getId());
 
-		 pstmt.executeUpdate();
-		 
+		 isUpdate = pstmt.executeUpdate();
+		 System.out.println(isUpdate); // 업데이트 구문 결과 확인용 출력문 
+		
 	} catch (Exception e) {
 		e.printStackTrace();
 	}finally {
 		if(pstmt!=null) try{pstmt.close();} catch(SQLException ex) {}
 		if(con!=null) try{con.close();} catch(SQLException ex) {}
 	}
+	return isUpdate;
 }
 	
 	public MemberBean getMember(String id) {

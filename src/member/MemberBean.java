@@ -10,7 +10,6 @@ public class MemberBean {
 	private Timestamp reg_date;
 	private String email;
 	private String address;
-	private String phone;
 	private String mobile;
 	private int postcode;
 	private String add1;
@@ -77,12 +76,6 @@ public class MemberBean {
 	}
 	public void setAddress(String address) {
 		this.address = address;
-	}
-	public String getPhone() {
-		return phone;
-	}
-	public void setPhone(String phone) {
-		this.phone = phone;
 	}
 	public String getMobile() {
 		return mobile;

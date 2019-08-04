@@ -27,34 +27,9 @@ String add1 = mb.getAdd1();
 String add2 = mb.getAdd2();
 String add3 = mb.getAdd3();
 %>
-<!--[if lt IE 9]>
-<script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js" type="text/javascript"></script>
-<script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/ie7-squish.js" type="text/javascript"></script>
-<script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
-<![endif]-->
-<!--[if IE 6]>
- <script src="../script/DD_belatedPNG_0.0.8a.js"></script>
- <script>
-   /* EXAMPLE */
-   DD_belatedPNG.fix('#wrap');
-   DD_belatedPNG.fix('#main_img');   
-
- </script>
- <![endif]-->
  <script type = "text/javascript">
  
- //------------------- 아이디 체크 기능 --------------------------------
- 	function idCheck(){ //아이디 중복 체크 
-   fid = document.fr.id.value;
-   if(fid==""){
-   alert("id를 입력하세요.");
-   document.fr.id.focus();
-   return;
-   }else{
-   window.open("idCheck.jsp?fid="+fid, "id 중복체크", "width=600, height=200");
-   }
- 	}
- 	
+ 
  	
  //------------------- 항목별 빈칸 체크.--------------------------------	
  
