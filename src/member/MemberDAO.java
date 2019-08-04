@@ -286,7 +286,29 @@ public class MemberDAO {
 		return result;
 	}
 	
+	public int deletePassCheck(String id, String pass) {
+		int isPassRight = -1;
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		try {
+			con = getConnection();
+			
+			String sql = "delete from member where id=? and password=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.setString(2, pass);
+			isPassRight = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(pstmt!=null) try{pstmt.close();} catch(SQLException ex) {}
+			if(con!=null) try{con.close();} catch(SQLException ex) {}
+		}
 	
+		
+		return isPassRight;
+	}
 	
 	
 	

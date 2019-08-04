@@ -34,36 +34,34 @@ String add3 = mb.getAdd3();
  //------------------- 항목별 빈칸 체크.--------------------------------	
  
  	function passCheck(){ // 회원가입을 눌렀을 때 각 항목들 검사.
-   pass = document.fr.pass.value;
-   pass2 = document.fr.pass2.value;
-   if(pass!=pass2){ // 2개의 비밀번호가 같은지를 검사.
-   alert("비밀번호가 다릅니다.");
-   document.fr.pass.focus();
-   return false;
-   }
+  		pass = document.fr.pass.value;
+  	 	pass2 = document.fr.pass2.value;
+ 		
+  	 	if(pass!=pass2){ // 2개의 비밀번호가 같은지를 검사.
+ 		 	alert("비밀번호가 다릅니다.");
+  			document.fr.pass.focus();
+  		 	return false;
+  		 }
    
    
-   if(pass.length<8) { // 비밀번호 길이 검사.
+  		if(pass.length<8) { // 비밀번호 길이 검사.
  	 	    alert("비밀번호는 영문(대소문자구분),숫자,특수문자(~!@#$%^&*()-_? 만 허용)를 혼용하여 8~15자를 입력해주세요.");
  	 	    return false;
  	 	}
    
-   if(!pass.match(/([a-zA-Z0-9].*[!,@,#,$,%,^,&,*,?,_,~,-])|([!,@,#,$,%,^,&,*,?,_,~,-].*[a-zA-Z0-9])/)) { //비밀번호 유효성 검사.
+  	 	if(!pass.match(/([a-zA-Z0-9].*[!,@,#,$,%,^,&,*,?,_,~,-])|([!,@,#,$,%,^,&,*,?,_,~,-].*[a-zA-Z0-9])/)) { //비밀번호 유효성 검사.
  	 	      alert("비밀번호는 영문(대소문자구분),숫자,특수문자(~!@#$%^&*()-_? 만 허용)를 혼용하여 8~15자를 입력해주세요.");
  	 	    return false;
- 	 	 }
+ 	 	}
    
-   name = document.fr.name.value;
+   		name = document.fr.name.value;
    
-   if(name==""){// 이름을 입력했는지 검사.
-   alert("이름을 입력하세요.");
-   document.fr.name.focus();
-   return false;
-   }
-   
- 
-   
- }
+   		if(name==""){// 이름을 입력했는지 검사.
+   			alert("이름을 입력하세요.");
+   			document.fr.name.focus();
+   			return false;	
+   		}
+	}
  	
  	 //------------------- 이메일 체크 기능. --------------------------------	
  	function authEmail(){ //이메일 인증 기능
@@ -77,9 +75,6 @@ String add3 = mb.getAdd3();
                  'width=500, height=400, menubar=no, status=no, toolbar=no');
         }
  	}
- 	
- 	
- 	
  	
 	 </script>
 </head>
@@ -102,7 +97,7 @@ String add3 = mb.getAdd3();
 <!-- 왼쪽메뉴 -->
 <!-- 본문내용 -->
 <article>
-<h1>Join Us</h1>
+<h1>My Profile</h1>
 <form action="updatePro.jsp" id="join" method="post" name = "fr">
 <fieldset>
 <legend>Basic Info</legend>
@@ -188,7 +183,8 @@ String add3 = mb.getAdd3();
 <div class="clear"></div>
 <div id="buttons">
 <input type="submit" value="회원 정보 수정" class="submit" onclick= "return passCheck()" >
-<input type="reset" value="취소" class="cancel">
+<input type="reset" value="취소" class="cancel">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="button" value="회원 탈퇴"class="submit" onclick="location.href='deleteMemberForm.jsp'">
 </div>
 </form>
 </article>
